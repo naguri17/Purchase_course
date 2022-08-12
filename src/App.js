@@ -1,11 +1,11 @@
-import ListCourse from "./components/ListCourse";
+import Courses from "./components/courses";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <ListCourse />
+    <div className="w-full flex flex-col absolute left-1/2 transform -translate-x-1/2 max-w-6xl py-10 gap-5">
+      <Courses />
     </div>
   );
-}
+};
 
 export default App;
