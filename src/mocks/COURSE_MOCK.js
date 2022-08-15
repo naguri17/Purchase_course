@@ -82,8 +82,8 @@ export const COURSES_MOCK = [
         name: "1 Sessions",
         description: "1 Sessions",
         value: 1,
-        price: 2099,
-        priceDiscount: 1299,
+        price: 1299,
+        priceDiscount: 999,
         percentDiscount: 38,
       },
       {

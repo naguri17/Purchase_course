@@ -5,12 +5,12 @@ const CourseItem = ({ src, name, selectLabel, opt }) => {
   const [selected, setSelected] = useState(opt[0]);
   const [status, setStatus] = useState(false);
 
-  const handleChange = (event) => {
-    const findOtp = opt?.find((item) => item?.name == event?.target?.value);
-    setSelected(findOtp);
-  };
-
   const Media = useCallback(() => {
+    const handleChange = (event) => {
+      const findOtp = opt?.find((item) => item?.name === event?.target?.value);
+      setSelected(findOtp);
+    };
+
     return (
       <div className="w-full col-span-2 flex flex-row gap-7 items-center">
         <button
@@ -26,6 +26,7 @@ const CourseItem = ({ src, name, selectLabel, opt }) => {
             <img
               src={src}
               className="w-full min-h-full absolute object-cover object-center"
+              alt={name}
             />
           </div>
         </div>
@@ -39,7 +40,11 @@ const CourseItem = ({ src, name, selectLabel, opt }) => {
             onChange={handleChange}
           >
             {opt?.map(({ name }) => (
-              <option key={name} value={name} selected={selected?.name == name}>
+              <option
+                key={name}
+                value={name}
+                selected={selected?.name === name}
+              >
                 {name}
               </option>
             ))}
@@ -47,35 +52,48 @@ const CourseItem = ({ src, name, selectLabel, opt }) => {
         </div>
       </div>
     );
-  }, [status]);
+  }, [
+    status,
+    name,
+    opt,
+    selectLabel,
+    selected?.description,
+    selected?.name,
+    src,
+  ]);
 
   const Price = useCallback(() => {
     return (
       <div className="flex flex-col items-center justify-center min-h-full">
         <div className="flex flex-col">
           <p className="text-lg">
-            $ {selected?.priceDiscount}
-            {selected?.unit ? `/ ${selected?.unit}` : ""}
+            $ {status ? selected?.priceDiscount : 0}
+            {status ? `${selected?.unit ? ` / ${selected?.unit}` : ""}` : ""}
           </p>
           <p className="text-sm text-primary">
-            ( {selected?.percentDiscount}% off )
+            {status ? `${selected?.percentDiscount}% off` : 0}
           </p>
-          <p className="text-sm text-gray-400">
-            $ {selected?.price}
-            {selected?.unit ? `/ ${selected?.unit}` : ""}
+          <p
+            className={`text-sm text-gray-400 ${status ? `line-through` : ""}`}
+          >
+            {status
+              ? ` ${selected?.price}$
+            ${selected?.unit ? ` / ${selected?.unit}` : ""}`
+              : 0}
           </p>
         </div>
       </div>
     );
-  }, [selected]);
+  }, [selected, status]);
 
   const Discount = useCallback(() => {
+    const priceDiscountAmount = selected?.price - selected?.priceDiscount;
     return (
       <div className="text-primary flex items-center justify-center">
-        -$ {selected?.value}
+        {status ? `-$ ${priceDiscountAmount}` : 0}
       </div>
     );
-  }, [selected]);
+  }, [selected, status]);
 
   return (
     <div className="w-full rounded-lg p-5 border-green-300 border-2 grid grid-cols-4 gap-2">

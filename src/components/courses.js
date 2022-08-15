@@ -5,10 +5,8 @@ const Courses = () => {
   return (
     <div className="w-full flex flex-col gap-3">
       {COURSES_MOCK.map(({ src, name, selectLabel, opt }) => {
-        console.log({ src });
         return (
           <CourseItem
-            status={false}
             src={src}
             name={name}
             selectLabel={selectLabel}
