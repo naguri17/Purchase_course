@@ -1,45 +1,55 @@
-export const data = [
+export const COURSES_MOCK = [
   {
     name: "JavaScript",
-    src: "https://fptcloud.com/wp-content/uploads/2022/01/cong-dung-cua-javascript-1.jpg",
+    src: "/assets/image_1.svg",
+    selectLabel: "Validity",
     opt: [
       {
         name: "30 days",
+        description: "Javascript 30",
         value: 30,
         price: 319,
         priceDiscount: 229,
         percentDiscount: 28,
+        unit: "month",
       },
       {
         name: "90 days",
+        description: "Javascript 90",
         value: 90,
         price: 186,
         priceDiscount: 116,
         percentDiscount: 37,
+        unit: "month",
       },
       {
         name: "180 days",
+        description: "Javascript 180",
         value: 180,
         price: 134,
         priceDiscount: 75,
         percentDiscount: 44,
+        unit: "month",
       },
       {
         name: "365 days",
+        description: "Javascript 365",
         value: 365,
         price: 106,
         priceDiscount: 56,
         percentDiscount: 49,
+        unit: "month",
       },
     ],
     course: "days",
   },
   {
     name: "ReactJS",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/182px-React-icon.svg.png",
+    src: "/assets/image_2.svg",
     opt: [
       {
         name: "1 Sessions",
+        description: "1 Sessions",
         value: 1,
         price: 799,
         priceDiscount: 499,
@@ -47,6 +57,7 @@ export const data = [
       },
       {
         name: "3 Sessions",
+        description: "3 Sessions",
         value: 3,
         price: 2099,
         priceDiscount: 1299,
@@ -54,6 +65,7 @@ export const data = [
       },
       {
         name: "5 Sessions",
+        description: "5 Sessions",
         value: 5,
         price: 3299,
         priceDiscount: 1999,
@@ -64,24 +76,19 @@ export const data = [
   },
   {
     name: "MOCK INTERVIEWS",
-    src: "https://i.pinimg.com/originals/f3/65/d5/f365d5f71a68df9d724096a116955e79.png",
+    src: "/assets/image_3.svg",
     opt: [
       {
         name: "1 Sessions",
+        description: "1 Sessions",
         value: 1,
-        price: 2099,
-        priceDiscount: 1299,
+        price: 1299,
+        priceDiscount: 999,
         percentDiscount: 38,
       },
       {
         name: "3 Sessions",
-        value: 3,
-        price: 2099,
-        priceDiscount: 1299,
-        percentDiscount: 38,
-      },
-      {
-        name: "3 Sessions",
+        description: "3 Sessions",
         value: 3,
         price: 2099,
         priceDiscount: 1299,
