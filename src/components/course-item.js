@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FiCheck } from "react-icons/fi";
 
-const CourseItem = ({ src, name, selectLabel, opt }) => {
+const CourseItem = ({ src, name, selectLabel, opt, handleUpdate }) => {
   const [selected, setSelected] = useState(opt[0]);
   const [status, setStatus] = useState(false);
 
@@ -14,7 +14,9 @@ const CourseItem = ({ src, name, selectLabel, opt }) => {
     return (
       <div className="w-full col-span-2 flex flex-row gap-7 items-center">
         <button
-          onClick={() => setStatus(!status)}
+          onClick={() => {
+            setStatus(!status);
+          }}
           type="button"
           className="p-1 rounded-full border-primary flex mr-5 items-center justify-center text-primary h-fit w-fit border"
         >
@@ -67,33 +69,35 @@ const CourseItem = ({ src, name, selectLabel, opt }) => {
       <div className="flex flex-col items-center justify-center min-h-full">
         <div className="flex flex-col">
           <p className="text-lg">
-            $ {status ? selected?.priceDiscount : 0}
-            {status ? `${selected?.unit ? ` / ${selected?.unit}` : ""}` : ""}
+            {/* $ {status ? selected?.priceDiscount : 0}
+            {status ? `${selected?.unit ? ` / ${selected?.unit}` : ""}` : ""} */}
+            $ {selected?.priceDiscount}
+            {`${selected?.unit ? ` / ${selected?.unit}` : ""}`}
           </p>
           <p className="text-sm text-primary">
-            {status ? `${selected?.percentDiscount}% off` : 0}
+            {`${selected?.percentDiscount}% off`}
           </p>
-          <p
-            className={`text-sm text-gray-400 ${status ? `line-through` : ""}`}
-          >
-            {status
-              ? ` ${selected?.price}$
-            ${selected?.unit ? ` / ${selected?.unit}` : ""}`
-              : 0}
+          <p className={`text-sm text-gray-400 ${`line-through`}`}>
+            {` ${selected?.price}$
+            ${selected?.unit ? ` / ${selected?.unit}` : ""}`}
           </p>
         </div>
       </div>
     );
-  }, [selected, status]);
+  }, [selected]);
 
   const Discount = useCallback(() => {
     const priceDiscountAmount = selected?.price - selected?.priceDiscount;
     return (
       <div className="text-primary flex items-center justify-center">
-        {status ? `-$ ${priceDiscountAmount}` : 0}
+        {`-$ ${priceDiscountAmount}`}
       </div>
     );
-  }, [selected, status]);
+  }, [selected]);
+
+  useEffect(() => {
+    handleUpdate(selected, status);
+  }, [status]);
 
   return (
     <div className="w-full rounded-lg p-5 border-green-300 border-2 grid grid-cols-4 gap-2">

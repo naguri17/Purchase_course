@@ -1,5 +1,6 @@
 export const COURSES_MOCK = [
   {
+    id: 0,
     name: "JavaScript",
     src: "/assets/image_1.svg",
     selectLabel: "Validity",
@@ -44,6 +45,7 @@ export const COURSES_MOCK = [
     course: "days",
   },
   {
+    id: 1,
     name: "ReactJS",
     src: "/assets/image_2.svg",
     opt: [
@@ -75,6 +77,7 @@ export const COURSES_MOCK = [
     course: "sessions",
   },
   {
+    id: 2,
     name: "MOCK INTERVIEWS",
     src: "/assets/image_3.svg",
     opt: [
